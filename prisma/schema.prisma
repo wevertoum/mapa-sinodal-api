@@ -1,0 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Contato {
+  id              Int      @id @default(autoincrement())
+  telefone        String?
+  celular         String?
+  email           String?
+  website         String?
+  igrejasContato  Igreja[]
+  pastoresContato Pastor[]
+}
+
+model Pastor {
+  id                  Int           @id @default(autoincrement())
+  nome                String
+  contato             Contato?      @relation(fields: [contatoId], references: [id])
+  contatoId           Int?
+  igreja              Igreja?       @relation("pastorIgreja", fields: [igrejaId], references: [id])
+  igrejaId            Int?          @unique
+  igrejasComoPastor   Igreja[]      @relation("pastorDasIgrejas")
+  presidente          Presbiterio[] @relation("presidente")
+  secretarioExecutivo Presbiterio[] @relation("secretarioExecutivo")
+}
+
+model Igreja {
+  id                Int          @id @default(autoincrement())
+  nome              String
+  endereco          String?
+  cep               String?
+  contato           Contato?     @relation(fields: [contatoId], references: [id])
+  contatoId         Int?
+  pastor            Pastor?      @relation("pastorIgreja")
+  presbiterio       Presbiterio? @relation(fields: [presbiterioId], references: [id])
+  presbiterioId     Int?
+  igrejasComoPastor Pastor[]     @relation("pastorDasIgrejas")
+}
+
+model Sinodo {
+  id           Int           @id @default(autoincrement())
+  nome         String
+  abreviacao   String
+  presbiterios Presbiterio[]
+}
+
+model Presbiterio {
+  id                    Int      @id @default(autoincrement())
+  nome                  String   @unique
+  sinodo                Sinodo?  @relation(fields: [sinodoId], references: [id])
+  sinodoId              Int?
+  presidente            Pastor?  @relation("presidente", fields: [presidenteId], references: [id])
+  presidenteId          Int?
+  secretarioExecutivo   Pastor?  @relation("secretarioExecutivo", fields: [secretarioExecutivoId], references: [id])
+  secretarioExecutivoId Int?
+  igrejas               Igreja[]
+}
