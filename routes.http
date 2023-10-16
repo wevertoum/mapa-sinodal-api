@@ -1,0 +1,8 @@
+# @name get-igrejas
+GET http://localhost:3333/igrejas
+###
+
+# @name get-igreja-id
+GET http://localhost:3333/igrejas/:id
+###
+
