@@ -45,3 +45,21 @@ paths:
             type: string
         400:
           description: "Bad request."
+  "/igrejas/{id}":
+    get:
+      description: "Retorna a igreja com o id informado"
+      operationId: "getIgreja"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          type: string
+      security:
+        - api_key: []
+      responses:
+        200:
+          description: "Success."
+          schema:
+            type: string
+        400:
+          description: "Bad request."
