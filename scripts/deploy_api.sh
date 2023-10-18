@@ -39,17 +39,17 @@ cleanup() {
 }
 
 # # Defaults.
-# API_FILE="../openapi.yaml"
+API_FILE="../openapi.yaml"
 
-# if [[ "$#" == 0 ]]; then
-#   : # Use defaults.
-# elif [[ "$#" == 1 ]]; then
-#   API_FILE="$1"
-# else
-#   echo "Wrong number of arguments specified."
-#   echo "Usage: deploy_api.sh [api-file]"
-#   exit 1
-# fi
+if [[ "$#" == 0 ]]; then
+  : # Use defaults.
+elif [[ "$#" == 1 ]]; then
+  API_FILE="$1"
+else
+  echo "Wrong number of arguments specified."
+  echo "Usage: deploy_api.sh [api-file]"
+  exit 1
+fi
 
 # Cleanup our temporary files even if our deployment fails.
 trap cleanup EXIT
