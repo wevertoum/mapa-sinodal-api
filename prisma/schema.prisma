@@ -36,6 +36,7 @@ model Igreja {
   id                Int          @id @default(autoincrement())
   nome              String
   endereco          String?
+  urlImagem         String?
   cep               String?
   contato           Contato?     @relation(fields: [contatoId], references: [id])
   contatoId         Int?
