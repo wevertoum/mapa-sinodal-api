@@ -24,7 +24,7 @@ schemes:
 securityDefinitions:
   api_key:
     type: "apiKey"
-    name: "mapa-sinodal-api-key"
+    name: "api_key"
     in: "query"
 paths:
   "/igrejas":
