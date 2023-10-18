@@ -21,6 +21,11 @@ info:
 host: "mapa-sinodal-api.appspot.com"
 schemes:
   - "https"
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "mapa-sinodal-api-key"
+    in: "query"
 paths:
   "/igrejas":
     get:
@@ -31,6 +36,8 @@ paths:
           in: "query"
           required: false
           type: string
+      security:
+        - api_key: []
       responses:
         200:
           description: "Success."
