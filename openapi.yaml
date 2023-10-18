@@ -31,11 +31,6 @@ paths:
     get:
       description: "Retorna a lista de igrejas"
       operationId: "getIgrejas"
-      parameters:
-        - name: "q"
-          in: "query"
-          required: false
-          type: string
       security:
         - api_key: []
       responses:
