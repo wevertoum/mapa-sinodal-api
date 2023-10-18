@@ -18,7 +18,7 @@ info:
   description: "Consulta de igrejas e demais informações das IPBs do SBC"
   version: "1.0.0"
 # This field will be replaced by the deploy_api.sh script.
-host: "YOUR-PROJECT-ID.appspot.com"
+host: "mapa-sinodal-api.appspot.com"
 schemes:
   - "https"
 paths:
