@@ -13,8 +13,8 @@ app.register(getIgrejaById);
 
 app
   .listen({
-    port: 3333,
+    port: 8080,
   })
   .then(() => {
-    console.log("Server is running on port 3333");
+    console.log("Server is running on port 8080");
   });
